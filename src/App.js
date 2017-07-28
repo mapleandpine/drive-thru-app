@@ -1,26 +1,34 @@
 import React, { Component } from 'react';
 import uuid from 'uuid';
 import Cam from './Components/Cam/Cam';
-import Orders from './Components/Orders/Orders';
-import OrderList from './Components/Orders/OrderList';
-import Menu from './Components/Menu/Menu';
-import AddOrder from './Components/Orders/AddOrder';
-// import AddMenuOrder from './Components/Menu/AddMenuOrder';
+// import Orders from './Components/Orders/Orders';
+import ActiveOrder from './Components/ActiveOrder/ActiveOrder';
 import './App.css';
+
+// use this Order definition via `let myOrder = new Order()`
+// maybe put this `Order` definition in its own file and import it
+// data definition and state should live top-level
+class Order {
+  constructor(title, category) {
+    this.title = title;
+    this.category = category;
+
+    this.items = [];
+    this.id = uuid.v4();
+    this.date = new Date();
+  }
+}
 
 class App extends Component {
 
   constructor(props) {
     super(props);
+
+    // ~store
     this.state = {
       orders: [],
-      orderList: [],
-      menu: []
-    }
-  }
-
-  getMenu() {
-    this.setState({menu: [
+      activeOrder: [],
+      menu: [
       {
         id: uuid.v4(),
         title: 'Hamburger',
@@ -36,43 +44,53 @@ class App extends Component {
         title: 'Drink',
         price: '1.99'
       }
-    ]})
-  }
-
-  componentWillMount() {
-    this.getMenu();
+      ]
+    }
   }
 
   handleAddOrder(order) {
-    let orders = this.state.orders;
-    orders.push(order);
-    this.setState({orders:orders});
+    this.setState((prevState, props) => {
+      // copy the array
+      let orders = prevState.orders.slice();
+      orders.push(order);
+      return {
+        orders: orders
+      }
+    });
   }
 
-  handleOnDeleteOrder(id){
-    let orders = this.state.orders;
-    let index = orders.findIndex(x => x.id === id);
-    orders.splice(index, 1);
-    this.setState({orders:orders});
+  handleOnDeleteOrder(orderToRemove){
+    this.setState(function(prevState, props){
+      let reducedOrders = prevState.orders.filter(order => order !== orderToRemove);
+      return {
+        orders: reducedOrders
+      }
+    });
   }
 
-  handleAddOrderList(menuItem) {
-    let orderList = this.state.orderList;
-    orderList.push(menuItem);
-    this.setState({orderList:orderList});
+  handleAddItem(newOrder) {
+    let activeOrder = this.state.activeOrder;
+    activeOrder.push(newOrder);
+    this.setState({activeOrder:activeOrder});
+  }
+
+  handleDeleteItem(id){
+    let activeOrder = this.state.activeOrder;
+    let index = activeOrder.findIndex(x => x.id === id);
+    activeOrder.splice(index, 1);
+    this.setState({activeOrder:activeOrder});
   }
 
   render() {
     return (
       <div className="App">
         <Cam />
-        <AddOrder addOrder={this.handleAddOrder.bind(this)} />
-        <Orders orders={this.state.orders} onDelete={this.handleOnDeleteOrder.bind(this)} />
-        <OrderList orderList={this.state.orderList} />
-        <Menu menu={this.state.menu} onAdd={this.handleAddOrderList.bind(this)} />
+        <ActiveOrder menu={this.state.menu} activeOrder={this.state.activeOrder} onAddItem={this.handleAddItem.bind(this)} onDeleteItem={this.handleDeleteItem.bind(this)}/>
       </div>
     );
   }
 }
+
+// <Orders orders={this.state.orders} onDelete={this.handleOnDeleteOrder.bind(this)} />
 
 export default App;

@@ -6,25 +6,22 @@ class MenuItem extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      newMenuOrder:{}
+      details:{
+        id: this.props.menuitem.id,
+        title: this.props.menuitem.title,
+        price: this.props.menuitem.price
+      }
     }
   }
 
-  addToOrder(e) {
-    this.setState({newOrder:{
-      id: this.props.menuitem.id,
-      title: this.props.menuitem.title,
-      price: this.props.menuitem.price
-    }}, function() {
-      console.log(this.state.newMenuOrder);
-      this.props.onAdd(this.state.newMenuOrder);
-    })
+  addItem(e) {
+    this.props.onAddItem(this.state.details);
     e.preventDefault();
   }
 
   render() {
     return (
-      <figure id={this.props.menuitem.id} className="MenuItem" onClick={this.addToOrder.bind(this)}>
+      <figure id={this.props.menuitem.id} className="MenuItem" onClick={this.addItem.bind(this)}>
         <strong>{this.props.menuitem.title}:</strong> {this.props.menuitem.price}
       </figure>
     );
@@ -33,7 +30,7 @@ class MenuItem extends Component {
 
 MenuItem.propTypes = {
   menuitem: PropTypes.object,
-  addToOrder: PropTypes.func
+  addItem: PropTypes.func
 }
 
 export default MenuItem;
