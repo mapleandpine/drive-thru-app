@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import MenuItem from './MenuItem';
-import OrderItem from "./OrderItem";
+import TicketItem from "./TicketItem";
+import "./ActiveOrder.css";
 
 class ActiveOrder extends Component {
 
@@ -24,11 +25,11 @@ class ActiveOrder extends Component {
       });
     }
 
-    let orderItems;
+    let ticketItems;
     if(this.props.activeOrder) {
-      orderItems = this.props.activeOrder.map(orderItem => {
+      ticketItems = this.props.activeOrder.map(ticketItem => {
         return (
-          <OrderItem onDeleteItem={this.deleteItem.bind(this)} key={orderItem.id} orderItem={orderItem} />
+          <TicketItem onDeleteItem={this.deleteItem.bind(this)} key={ticketItem.id} ticketItem={ticketItem} />
         )
       });
     }
@@ -36,10 +37,16 @@ class ActiveOrder extends Component {
     return (
       <div className="ActiveOrder">
         <div className="Menu">
-          {menuItems}
+          <h2 className="heading">Menu</h2>
+          <div className="MenuList">
+            {menuItems}
+          </div>
         </div>
-        <div className="Items">
-          {orderItems}
+        <div className="Ticket">
+          <h2 className="heading">Ticket</h2>
+          <div className="TicketList">
+            {ticketItems}
+          </div>
         </div>
       </div>
     );

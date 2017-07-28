@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Menu from "./Menu.png";
 
 class MenuItem extends Component {
 
@@ -20,10 +21,15 @@ class MenuItem extends Component {
   }
 
   render() {
+    var figureStyle = {
+      backgroundImage: 'url(' + Menu + ')'
+    };
     return (
-      <figure id={this.props.menuitem.id} className="MenuItem" onClick={this.addItem.bind(this)}>
-        <strong>{this.props.menuitem.title}:</strong> {this.props.menuitem.price}
-      </figure>
+      <div id={this.props.menuitem.id} className="MenuItem" onClick={this.addItem.bind(this)}>
+        <figure className={this.props.menuitem.class} style={figureStyle}>
+          <strong>{this.props.menuitem.title}</strong> {this.props.menuitem.price}
+        </figure>
+      </div>
     );
   }
 }

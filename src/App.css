@@ -88,102 +88,17 @@ a:hover {
   color: #363636;
 }
 
+.heading {
+  font-size: 14px;
+  padding: 5px;
+}
+
 .App {
   background-color: #fff;
   color: #444;
   display: grid;
   grid-gap: 10px;
-  grid-template-columns: repeat(3, [col] 150px ) ;
+  grid-template-columns: repeat(4, [col] 150px ) ;
   grid-template-rows: repeat(4, [row] auto );
   padding: 10px;
-}
-
-.Orders,
-.Menu,
-.Items {
-  background-color: #444;
-  border-radius: 5px;
-  color: #fff;
-}
-
-.Orders {
-  grid-column: col / span 2;
-  grid-row: row 3;
-}
-
-.ActiveOrder {
-  background-color: #999;
-  border-radius: 6px;
-  padding: 10px;
-
-  grid-column: col 1 / span 4;
-  grid-row: row 2;
-  display: grid;
-  grid-gap: 10px;
-  grid-template-columns: 1fr 1fr 1fr;
-}
-
-.Menu {
-  display: flex;
-  flex-wrap: wrap;
-  grid-column: 1 / span 2;
-  grid-row: 1;
-  padding: 5px;
-}
-
-.MenuItem {
-  background-color: #959595;
-  border-radius: 4px;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: 5px;
-  padding: 5px;
-  text-align: center;
-  width: 20%;
-}
-
-.MenuItem:hover,
-.MenuItem:focus,
-.MenuItem:active {
-  background-color: #757575;
-}
-
-.Items {
-  grid-column: 3;
-  grid-row: 1;
-  padding: 10px;
-}
-
-.OrderItem {
-  cursor: pointer;
-  display: flex;
-  list-style: none;
-}
-
-.OrderItemName {
-  background-color: #959595;
-  border-radius: 4px;
-  display: flex;
-  flex-grow: 2;
-  justify-content: space-between;
-  margin: 5px;
-  padding: 5px;
-}
-
-.OrderItemName span {
-  display: inline-block;
-}
-
-.OrderItemDelete {
-  background-color: #959595;
-  border-radius: 4px;
-  display: inline-block;
-  font-size: 24px;
-  line-height: 24px;
-  margin: 5px;
-  padding: 5px;
-  text-align: center;
-  width: 34px;
 }

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import OrderItem from "./OrderItem";
-import './Orders.css';
+import Order from "./Order";
 
 class Orders extends Component {
 
@@ -17,14 +16,14 @@ class Orders extends Component {
   }
 
   newOrder(e) {
-    this.setState({newOrder: new Order()}, function() {
-      this.props.addOrder(this.state.newOrder);
-    })
+    // this.setState({newOrder: new Order()}, function() {
+    //   this.props.addOrder(this.state.newOrder);
+    // })
     e.preventDefault();
   }
 
-  deleteOrder(order) {
-    this.props.onDelete(order);
+  deleteOrder(id) {
+    this.props.onDeleteOrder(id);
   }
 
   render() {
@@ -32,17 +31,14 @@ class Orders extends Component {
     if(this.props.orders) {
       orderItems = this.props.orders.map(order => {
         return (
-          <OrderItem onDelete={this.deleteOrder.bind(this)} key={order.title} order={order} />
+          <Order onDeleteOrder={this.deleteOrder.bind(this)} key={order.id} order={order} />
         )
       });
     }
     return (
       <div className="Orders">
-        <h2>Orders</h2>
+        <h2 className="heading">Orders</h2>
         {orderItems}
-        <form onSubmit={this.newOrder.bind(this)}>
-          <input type="submit" value="Submit"/>
-        </form>
       </div>
     );
   }

@@ -1,0 +1,76 @@
+/* ORDERS */
+
+.Orders {
+  background-color: #444;
+  border-radius: 5px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  grid-column: col / span 3;
+  grid-row: row 2;
+  padding: 10px;
+}
+
+.Orders .heading {
+  text-transform: uppercase;
+}
+
+.Order {
+  cursor: pointer;
+  display: flex;
+  list-style: none;
+}
+
+.OrderName {
+  background-color: #d5d5d5;
+  border-radius: 4px;
+  color: #333;
+  display: flex;
+  flex-grow: 2;
+  justify-content: space-between;
+  margin: 5px;
+  padding: 10px;
+}
+
+.OrderName:hover {
+  background-color: #e5e5e5;
+}
+
+.Order:last-child .OrderDelete {
+  display: none;
+}
+
+.OrderDelete {
+  background-color: #f00;
+  border-radius: 4px;
+  display: inline-block;
+  font-size: 24px;
+  line-height: 24px;
+  margin: 5px;
+  padding: 10px;
+  text-align: center;
+  width: 34px;
+}
+
+.OrderDelete:hover {
+  background-color: #00f;
+}
+
+.OrderNew {
+  background-color: #0ff;
+  border-radius: 4px;
+  color: #333;
+  display: none;
+  margin: 5px;
+  padding: 10px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.OrderNew:hover {
+  background-color: #f5f505;
+}
+
+.Order:last-child .OrderNew {
+  display: block;
+}
