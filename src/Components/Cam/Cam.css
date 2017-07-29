@@ -1,30 +1,35 @@
 .Cam {
-  background-color: #444;
-  border-radius: 5px;
+  background-color: #555;
   color: #fff;
-  grid-column: col 4 / span 2;
-  grid-row: row 2;
+  grid-column: col;
+  grid-row: row;
+  padding: 10px;
+  padding-bottom: 0;
   position: relative;
 }
 
 .Cam::before {
-  position:absolute;
-  content:'';
-  z-index:-1;
-  top:0;bottom:0;left:0;right:0;
   background-image: linear-gradient(22.5deg, #000 25%, transparent 25%, transparent 50%, #000 50%, #000 75%, transparent 75%, transparent);
   background-size: 4px 4px;
+  bottom:0;
+  content:'';
+  left:0;
+  position:absolute;
+  right:0;
+  top:0;
+  z-index:-1;
 }
 
 .Cam::after {
-  content: "Camera 1";
+  bottom: 12px;
+  content: "Order Cam";
   display: block;
+  left: 18px;
   position: absolute;
-  right: 1rem;
-  top: .5rem;
 }
 
 .CamVideo {
-  filter: blur(1px) brightness(.9) contrast(1.1) grayscale(.75) opacity(.65) saturate(1.8) sepia(.75);
+  border-radius: 8px;
+  filter: blur(1px) brightness(.9) contrast(1.1) grayscale(.75) opacity(.65) saturate(1.8) sepia(.25);
   width: 100%;
 }

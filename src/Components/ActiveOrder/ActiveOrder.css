@@ -1,26 +1,21 @@
 /* ACTIVE ORDER */
 
 .ActiveOrder {
-  background-color: #999;
-  border-radius: 6px;
-  padding: 10px;
-
-  grid-column: col / span 5;
-  grid-row: row 3;
+  grid-column: col / span 2;
+  grid-row: row 2;
   display: grid;
-  grid-gap: 10px;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
 }
 
 
 /* MENU */
 
 .Menu {
-  border-right: 1px solid #333;
-  grid-column: 1 / span 2;
+  background-color: #555;
+  border-radius: 0 0 12px 0;
+  grid-column: 1;
   grid-row: 1;
-  padding: 5px;
-  padding-right: 20px;
+  padding: 6px;
 }
 
 .Menu .heading {
@@ -38,37 +33,76 @@
 }
 
 .MenuItem figure {
-  background-color: #f5f5f5;
-  border-radius: 4px;
+  background-color: #e5e5e5;
+  background-repeat: no-repeat;
+  background-size: 400%;
+  border-radius: 8px;
+  box-shadow: 0 0 40px rgba(255,255,255,.4) inset;
+  color: #353535;
   cursor: pointer;
-  display: flex;
-  flex-direction: column;
+  height: 140px;
   justify-content: center;
-  padding: 50px 0;
-  text-align: center;
+  padding: 10px;
+  transition: all .2s;
 }
 
 .MenuItem figure:hover,
 .MenuItem figure:focus,
 .MenuItem figure:active {
-  background-color: #fff;
+  background-color: rgba(255,255,255,.65);
+  box-shadow: 0 0 20px rgba(0,0,0,.2) inset;
 }
 
-.MenuItem .hamburger {
-  background-image: url();
+.MenuItem figure strong {
+  display: block;
+}
+
+.MenuItem .cheeseburger {
+  background-position: 40px -165px;
+}
+
+.MenuItem .hotdog {
+  background-position: -90px -165px;
+}
+
+.MenuItem .fries {
+  background-position: -260px -172px;
+}
+
+.MenuItem .chicken {
+  background-position: -412px -180px;
+}
+
+.MenuItem .coffee {
+  background-position: 40px 24px;
+}
+
+.MenuItem .soda {
+  background-position: -110px 28px;
+}
+
+.MenuItem .beer {
+  background-position: -420px 30px;
+}
+
+.MenuItem .icecream {
+  background-position: -415px -366px;
 }
 
 
 /* TICKET */
 
 .Ticket {
-  grid-column: 3;
+  grid-column: 2;
   grid-row: 1;
   padding-left: 10px;
   padding-right: 10px;
 }
 
 .Ticket .heading {
+  border-bottom: 1px solid #555;
+  color: #555;
+  margin-bottom: 1rem;
   text-transform: uppercase;
 }
 
@@ -77,25 +111,46 @@
   list-style: none;
 }
 
-.TicketItemName {
-  background-color: #f5f5f5;
+.TicketItemName,
+.TicketItemPrice,
+.TicketItemQty {
+  background-color: #fff;
   border-radius: 4px;
-  display: flex;
-  flex-grow: 2;
+  color: #555;
   font-weight: 700;
-  justify-content: space-between;
   margin: 5px;
   padding: 10px 15px;
 }
 
-.TicketItemName span {
+.TicketItemName {
+  flex-grow: 2;
+}
+
+.TicketItemQuantity,
+.TicketItemMinus,
+.TicketItemPlus {
+  background-color: #EFCE5D;
+  border-radius: 4px;
+  color: #353535;
   display: inline-block;
+  font-size: 36px;
+  line-height: 24px;
+  margin: 5px;
+  padding: 10px;
+  text-align: center;
+  width: 44px;
+}
+
+.TicketItemQuantity:hover,
+.TicketItemMinus:hover,
+.TicketItemPlus:hover {
+  background-color: #E2BE57;
 }
 
 .TicketItemDelete {
-  background-color: #ff0;
+  background-color: #CE4E4E;
   border-radius: 4px;
-  color: #333;
+  color: #f5f5f5;
   display: inline-block;
   font-size: 36px;
   line-height: 24px;
@@ -106,5 +161,5 @@
 }
 
 .TicketItemDelete:hover {
-  background-color: #f5f505;
+  background-color: #B2474D;
 }

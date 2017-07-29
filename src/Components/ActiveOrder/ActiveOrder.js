@@ -26,30 +26,27 @@ class ActiveOrder extends Component {
     }
 
     let ticketItems;
-    if(this.props.activeOrder) {
-      ticketItems = this.props.activeOrder.map(ticketItem => {
+    if(this.props.activeOrder.items) {
+      ticketItems = this.props.activeOrder.items.map(ticketItem => {
         return (
           <TicketItem onDeleteItem={this.deleteItem.bind(this)} key={ticketItem.id} ticketItem={ticketItem} />
         )
       });
     }
 
-    return (
-      <div className="ActiveOrder">
-        <div className="Menu">
-          <h2 className="heading">Menu</h2>
-          <div className="MenuList">
-            {menuItems}
-          </div>
-        </div>
-        <div className="Ticket">
-          <h2 className="heading">Ticket</h2>
-          <div className="TicketList">
-            {ticketItems}
-          </div>
+    return <div className="ActiveOrder">
+      <div className="Menu">
+        <div className="MenuList">
+          {menuItems}
         </div>
       </div>
-    );
+      <div className="Ticket">
+        <h2 className="heading">Ticket</h2>
+        <div className="TicketList">
+          {ticketItems}
+        </div>
+      </div>
+    </div>;
   }
 }
 

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import OrderClass from './OrderClass';
 import Order from "./Order";
 
 class Orders extends Component {
@@ -15,11 +16,14 @@ class Orders extends Component {
     console.log(nextProps, nextState);
   }
 
+  activeOrder(id) {
+    this.props.onActiveOrder(id);
+  }
+
   newOrder(e) {
-    // this.setState({newOrder: new Order()}, function() {
-    //   this.props.addOrder(this.state.newOrder);
-    // })
-    e.preventDefault();
+    this.setState({newOrder: new OrderClass()}, function() {
+      this.props.onAddOrder(this.state.newOrder);
+    })
   }
 
   deleteOrder(id) {
@@ -31,7 +35,7 @@ class Orders extends Component {
     if(this.props.orders) {
       orderItems = this.props.orders.map(order => {
         return (
-          <Order onDeleteOrder={this.deleteOrder.bind(this)} key={order.id} order={order} />
+          <Order onAddOrder={this.newOrder.bind(this)} onActiveOrder={this.activeOrder.bind(this)} onDeleteOrder={this.deleteOrder.bind(this)} key={order.id} order={order} />
         )
       });
     }

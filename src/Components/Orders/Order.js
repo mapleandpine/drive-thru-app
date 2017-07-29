@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import OrderClass from './OrderClass';
 import './Orders.css';
 
 class Order extends Component {
 
+  activeOrder(id) {
+    this.props.onActiveOrder(id);
+  }
+
   newOrder(e) {
-    console.log('new order');
-    // this.setState({newOrder: new Order()}, function() {
-    //   this.props.addOrder(this.state.newOrder);
-    // })
+    this.setState({newOrder: new OrderClass()}, function() {
+      this.props.onAddOrder(this.state.newOrder);
+    })
     e.preventDefault();
   }
 
@@ -19,7 +23,7 @@ class Order extends Component {
   render() {
     return (
       <li className="Order">
-        <span className="OrderName">{this.props.order.date.toLocaleTimeString()}</span> <a className="OrderNew" onClick={this.newOrder.bind(this)}>New</a> <a className="OrderDelete" href="#;" onClick={this.deleteOrder.bind(this, this.props.order.id)}>&times;</a>
+        <span className="OrderName" onClick={this.activeOrder.bind(this)}>{this.props.order.date.toLocaleTimeString()}</span> <a className="OrderNew" onClick={this.newOrder.bind(this)}>&#43;</a> <a className="OrderDelete" href="#;" onClick={this.deleteOrder.bind(this, this.props.order.id)}>&times;</a>
       </li>
     );
   }

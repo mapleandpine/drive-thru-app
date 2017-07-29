@@ -5,17 +5,6 @@ import Orders from './Components/Orders/Orders';
 import ActiveOrder from './Components/ActiveOrder/ActiveOrder';
 import './App.css';
 
-// use this Order definition via `let myOrder = new Order()`
-// maybe put this `Order` definition in its own file and import it
-// data definition and state should live top-level
-class OrderClass {
-  constructor(title, category) {
-    this.items = [];
-    this.id = uuid.v4();
-    this.date = new Date();
-  }
-}
-
 class App extends Component {
 
   constructor(props) {
@@ -23,7 +12,56 @@ class App extends Component {
 
     // ~store
     this.state = {
-      orders: [],
+      orders: [
+        {
+          id: uuid.v4(),
+          date: new Date(),
+          items: [
+            {
+              id: uuid.v4(),
+              class: 'cheeseburger',
+              title: 'Cheeseburger',
+              price: '4.99'
+            },
+            {
+              id: uuid.v4(),
+              class: 'fries',
+              title: 'Fries',
+              price: '1.99'
+            },
+            {
+              id: uuid.v4(),
+              class: 'soda',
+              title: 'Soda',
+              price: '1.99'
+            }
+          ]
+        },
+        {
+          id: uuid.v4(),
+          date: new Date(),
+          items: [
+            {
+              id: uuid.v4(),
+              class: 'hotdog',
+              title: 'Hot Dog',
+              price: '4.99'
+            },
+            {
+              id: uuid.v4(),
+              class: 'fries',
+              title: 'Fries',
+              price: '1.99'
+            },
+            {
+              id: uuid.v4(),
+              class: 'soda',
+              title: 'Soda',
+              price: '1.99'
+            }
+          ]
+        }
+      ],
       activeOrder: [],
       menu: [
         {
@@ -70,12 +108,6 @@ class App extends Component {
         },
         {
           id: uuid.v4(),
-          class: 'cake',
-          title: 'Cake',
-          price: '1.99'
-        },
-        {
-          id: uuid.v4(),
           class: 'icecream',
           title: 'Ice Cream',
           price: '1.99'
@@ -84,14 +116,37 @@ class App extends Component {
     }
   }
 
-  firstOrder() {
-    this.setState({orders: [
+  getActiveOrder() {
+    this.setState({activeOrder:
       {
-        items: [],
         id: uuid.v4(),
-        date: new Date()
+        date: new Date(),
+        items: [
+          {
+            id: uuid.v4(),
+            class: 'cheeseburger',
+            title: 'Cheeseburger',
+            price: '4.99'
+          },
+          {
+            id: uuid.v4(),
+            class: 'fries',
+            title: 'Fries',
+            price: '1.99'
+          },
+          {
+            id: uuid.v4(),
+            class: 'soda',
+            title: 'Soda',
+            price: '1.99'
+          }
+        ]
       }
-    ]})
+    })
+  }
+
+  handleActiveOrder(id){
+    console.log(id);
   }
 
   handleAddOrder(id) {
@@ -103,9 +158,10 @@ class App extends Component {
         orders: orders
       }
     });
+    this.countOrders();
   }
 
-  handleOnDeleteOrder(id){
+  handleDeleteOrder(id){
     let orders = this.state.orders;
     let index = orders.findIndex(x => x.id === id);
     orders.splice(index, 1);
@@ -118,9 +174,15 @@ class App extends Component {
     // });
   }
 
-  handleAddItem(newOrder) {
+  handleAddItem(newItems) {
+    // debugger;
     let activeOrder = this.state.activeOrder;
-    activeOrder.push(newOrder);
+    let activeOrderItems = this.state.activeOrder.items;
+    // need to figure out how to push to activeOrder.items
+    // could this work: https://github.com/kolodny/immutability-helper
+    activeOrderItems.push(newItems);
+    console.log(this.state.activeOrder);
+
     this.setState({activeOrder:activeOrder});
   }
 
@@ -131,19 +193,30 @@ class App extends Component {
     this.setState({activeOrder:activeOrder});
   }
 
+  countOrders() {
+    let orderLength = (this.state.orders).length;
+    if (orderLength > 3) {
+      alert('get the manager!');
+    }
+  }
+
   componentWillMount() {
-    this.firstOrder();
+    this.getActiveOrder();
   }
 
   render() {
     return (
       <div className="App">
-        <h1 className="heading">OrderTRON 9000</h1>
-        <Orders orders={this.state.orders} onDeleteOrder={this.handleOnDeleteOrder.bind(this)} />
+        <h1 className="AppHeading">OrderTRON 9000</h1>
         <Cam />
+        <Orders orders={this.state.orders} onAddOrder={this.handleAddOrder.bind(this)} onActiveOrder={this.handleActiveOrder.bind(this)} onDeleteOrder={this.handleDeleteOrder.bind(this)} />
         <ActiveOrder menu={this.state.menu} activeOrder={this.state.activeOrder} onAddItem={this.handleAddItem.bind(this)} onDeleteItem={this.handleDeleteItem.bind(this)}/>
       </div>
     );
+  }
+
+  componentDidMount() {
+    this.countOrders();
   }
 }
 

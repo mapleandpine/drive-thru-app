@@ -9,9 +9,14 @@ class TicketItem extends Component {
 
   render() {
     return (
-      <li className="TicketItem">
-        <span className="TicketItemName"><span>{this.props.ticketItem.title}</span><span>{this.props.ticketItem.price}</span></span> <a className="TicketItemDelete" href="#;" onClick={this.deleteTicketItem.bind(this, this.props.ticketItem.id)}>&times;</a>
-      </li>
+      <div className="TicketItem">
+        <span className="TicketItemName">{this.props.ticketItem.title}</span>
+        <a className="TicketItemMinus" href="#;" onClick={this.deleteTicketItem.bind(this, this.props.ticketItem.class)}>&minus;</a>
+        <span className="TicketItemQty">1</span>
+        <a className="TicketItemPlus" href="#;" onClick={this.deleteTicketItem.bind(this, this.props.ticketItem.class)}>&#43;</a>
+        <span className="TicketItemPrice">{this.props.ticketItem.price}</span>
+        <a className="TicketItemDelete" href="#;" onClick={this.deleteTicketItem.bind(this, this.props.ticketItem.class)}>&times;</a>
+      </div>
     );
   }
 }
