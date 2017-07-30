@@ -1,29 +1,21 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import OrderClass from './OrderClass';
 import Order from "./Order";
+import OrderClosed from "./OrderClosed";
+import './Orders.css';
 
 class Orders extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      newOrder:{}
-    }
-  }
-
   componentWillUpdate(nextProps, nextState) {
-    console.log(nextProps, nextState);
+    // console.log(nextProps, nextState);
   }
 
   activeOrder(id) {
     this.props.onActiveOrder(id);
   }
 
-  newOrder(e) {
-    this.setState({newOrder: new OrderClass()}, function() {
-      this.props.onAddOrder(this.state.newOrder);
-    })
+  completeOrder(id) {
+    this.props.onCompleteOrder(id);
   }
 
   deleteOrder(id) {
@@ -31,18 +23,25 @@ class Orders extends Component {
   }
 
   render() {
-    let orderItems;
-    if(this.props.orders) {
-      orderItems = this.props.orders.map(order => {
+
+    let orderItem;
+    orderItem = this.props.orders.map(order => {
+      const closed = order.closed;
+      if (closed) {
         return (
-          <Order onAddOrder={this.newOrder.bind(this)} onActiveOrder={this.activeOrder.bind(this)} onDeleteOrder={this.deleteOrder.bind(this)} key={order.id} order={order} />
+          <OrderClosed onActiveOrder={this.activeOrder.bind(this)} onDeleteOrder={this.deleteOrder.bind(this)} key={order.id} order={order} />
         )
-      });
-    }
+      } else {
+        return (
+          <Order onActiveOrder={this.activeOrder.bind(this)} onCompleteOrder={this.completeOrder.bind(this)} onDeleteOrder={this.deleteOrder.bind(this)} key={order.id} order={order} />
+        )
+      }
+    });
+
     return (
       <div className="Orders">
         <h2 className="heading">Orders</h2>
-        {orderItems}
+        {orderItem}
       </div>
     );
   }

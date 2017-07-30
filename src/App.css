@@ -1,3 +1,14 @@
+@keyframes pulse {
+  0% {
+    background-color: #fff;
+    box-shadow: 0 0 0 #fff;
+  }
+  100% {
+    background-color: #EFCE5D;
+    box-shadow: 0 0 10px #EFCE5D;
+  }
+}
+
 html,
 body,
 p,
@@ -81,6 +92,12 @@ a {
   text-decoration: none;
 }
 
+button {
+  border: 0 none;
+  cursor: pointer;
+  outline: 0;
+}
+
 .heading {
   font-size: 14px;
   padding: 5px;
@@ -100,4 +117,13 @@ a {
   font-weight: 700;
   height: 32px;
   padding: 5px 10px;
+}
+
+/* ACTIVE ORDER */
+
+.ActiveOrder {
+  grid-column: col / span 2;
+  grid-row: row 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }

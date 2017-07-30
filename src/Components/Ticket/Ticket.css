@@ -1,0 +1,80 @@
+/* TICKET */
+
+.Ticket {
+  grid-column: 2;
+  grid-row: 1;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.Ticket .heading {
+  color: #555;
+  text-transform: uppercase;
+}
+
+.TicketList {
+  display: flex;
+  flex-direction: column;
+}
+
+.TicketItem {
+  display: flex;
+  list-style: none;
+  margin-bottom: 10px;
+}
+
+.TicketItemName,
+.TicketItemPrice {
+  background-color: #fff;
+  border-radius: 2px;
+  color: #555;
+  font-weight: 700;
+  margin-right: 5px;
+  padding: 10px 15px;
+}
+
+.TicketItemName {
+  flex-grow: 2;
+}
+
+.TicketItemDelete {
+  background-color: #CE4E4E;
+  border-radius: 2px;
+  color: #f5f5f5;
+  display: inline-block;
+  font-size: 36px;
+  line-height: 24px;
+  padding: 10px;
+  text-align: center;
+  width: 44px;
+}
+
+.TicketItemDelete:hover {
+  background-color: #B2474D;
+}
+
+.TicketItemDelete svg {
+  fill: #fff;
+}
+
+.TicketMessage {
+  background-color: #8CC394;
+  color: #325738;
+  display: block;
+  font-size: 18px;
+  padding: 1rem;
+}
+
+.TicketSave {
+  background-color: #5FA866;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 18px;
+  padding: 10px 0;
+  text-align: center;
+  width: 100%;
+}
+
+.TicketSave:hover {
+  background-color: #4C8354;
+}

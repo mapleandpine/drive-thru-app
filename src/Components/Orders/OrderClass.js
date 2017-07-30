@@ -7,9 +7,10 @@ class OrderClass extends Component {
   // data definition and state should live top-level
   constructor() {
     super();
-    this.items = [];
-    this.id = uuid.v4();
+    this.closed = false;
     this.date = new Date();
+    this.id = uuid.v4();
+    this.items = [];
   }
 }
 

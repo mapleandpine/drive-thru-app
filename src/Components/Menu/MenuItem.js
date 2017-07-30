@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import uuid from 'uuid';
 import Menu from "./Menu.png";
 
 class MenuItem extends Component {
@@ -8,7 +9,8 @@ class MenuItem extends Component {
     super(props);
     this.state = {
       details:{
-        id: this.props.menuitem.id,
+        id: uuid.v4(),
+        class: this.props.menuitem.class,
         title: this.props.menuitem.title,
         price: this.props.menuitem.price
       }
@@ -25,7 +27,7 @@ class MenuItem extends Component {
       backgroundImage: 'url(' + Menu + ')'
     };
     return (
-      <div id={this.props.menuitem.id} className="MenuItem" onClick={this.addItem.bind(this)}>
+      <div className="MenuItem" onClick={this.addItem.bind(this)}>
         <figure className={this.props.menuitem.class} style={figureStyle}>
           <strong>{this.props.menuitem.title}</strong> {this.props.menuitem.price}
         </figure>

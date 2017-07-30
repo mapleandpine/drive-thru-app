@@ -1,0 +1,80 @@
+/* MENU */
+
+.Menu {
+  background-color: #555;
+  border-radius: 0 0 12px 0;
+  grid-column: 1;
+  grid-row: 1;
+  padding: 6px;
+}
+
+.Menu .heading {
+  text-transform: uppercase;
+}
+
+.MenuList {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.MenuItem {
+  padding: 5px;
+  width: 25%;
+}
+
+.MenuItem figure {
+  background-color: #e5e5e5;
+  background-repeat: no-repeat;
+  background-size: 400%;
+  border-radius: 8px;
+  box-shadow: 0 0 40px rgba(255,255,255,.4) inset;
+  color: #353535;
+  cursor: pointer;
+  height: 140px;
+  justify-content: center;
+  padding: 10px;
+  transition: all .2s;
+}
+
+.MenuItem figure:hover,
+.MenuItem figure:focus,
+.MenuItem figure:active {
+  background-color: rgba(255,255,255,.65);
+  box-shadow: 0 0 20px rgba(0,0,0,.2) inset;
+}
+
+.MenuItem figure strong {
+  display: block;
+}
+
+.MenuItem .cheeseburger {
+  background-position: 40px -165px;
+}
+
+.MenuItem .hotdog {
+  background-position: -90px -165px;
+}
+
+.MenuItem .fries {
+  background-position: -260px -172px;
+}
+
+.MenuItem .chicken {
+  background-position: -412px -180px;
+}
+
+.MenuItem .coffee {
+  background-position: 40px 24px;
+}
+
+.MenuItem .soda {
+  background-position: -110px 28px;
+}
+
+.MenuItem .beer {
+  background-position: -420px 30px;
+}
+
+.MenuItem .icecream {
+  background-position: -415px -366px;
+}
