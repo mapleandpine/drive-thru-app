@@ -38,7 +38,7 @@ class MenuItem extends Component {
 
 MenuItem.propTypes = {
   menuitem: PropTypes.object,
-  addItem: PropTypes.func
+  onAddItem: PropTypes.func
 }
 
 export default MenuItem;

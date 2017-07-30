@@ -30,8 +30,8 @@ class Menu extends Component {
 }
 
 Menu.propTypes = {
-  addItem: PropTypes.func,
-  deleteItem: PropTypes.func
+  onAddItem: PropTypes.func,
+  menu: PropTypes.object
 }
 
 export default Menu;

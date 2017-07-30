@@ -14,8 +14,7 @@ class TicketItemClosed extends Component {
 }
 
 TicketItemClosed.propTypes = {
-  ticketItem: PropTypes.object,
-  onDelete: PropTypes.func
+  ticketItem: PropTypes.object
 }
 
 export default TicketItemClosed;

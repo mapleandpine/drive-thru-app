@@ -20,7 +20,7 @@ class TicketItem extends Component {
 
 TicketItem.propTypes = {
   ticketItem: PropTypes.object,
-  onDelete: PropTypes.func
+  onDeleteItem: PropTypes.func
 }
 
 export default TicketItem;

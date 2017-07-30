@@ -28,7 +28,9 @@ class Order extends Component {
 
 Order.propTypes = {
   order: PropTypes.object,
-  onDelete: PropTypes.func
+  onActiveOrder: PropTypes.func,
+  onCompleteOrder: PropTypes.func,
+  onDeleteOrder: PropTypes.func
 }
 
 export default Order;

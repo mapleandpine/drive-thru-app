@@ -83,8 +83,11 @@ function TicketMessage(props) {
 }
 
 ActiveOrder.propTypes = {
+  hasItems: PropTypes.object,
+  activeOrder: PropTypes.object,
   addItem: PropTypes.func,
-  deleteItem: PropTypes.func
+  onAddOrder: PropTypes.func,
+  onDeleteItem: PropTypes.func
 }
 
 export default ActiveOrder;

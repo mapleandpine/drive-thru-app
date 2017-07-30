@@ -6,10 +6,6 @@ import './Orders.css';
 
 class Orders extends Component {
 
-  componentWillUpdate(nextProps, nextState) {
-    // console.log(nextProps, nextState);
-  }
-
   activeOrder(id) {
     this.props.onActiveOrder(id);
   }
@@ -47,9 +43,11 @@ class Orders extends Component {
   }
 }
 
-Orders.propTypes = {
-  orders: PropTypes.array,
-  onDelete: PropTypes.func
+Order.propTypes = {
+  orders: PropTypes.object,
+  onActiveOrder: PropTypes.func,
+  onCompleteOrder: PropTypes.func,
+  onDeleteOrder: PropTypes.func
 }
 
 export default Orders;
