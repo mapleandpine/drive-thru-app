@@ -6,11 +6,6 @@ import Menu from './Components/Menu/Menu';
 import Ticket from './Components/Ticket/Ticket';
 import './App.css';
 
-// TODO
-// Add a "complete" true/false check
-// Add tests
-
-
 class App extends Component {
 
   constructor(props) {

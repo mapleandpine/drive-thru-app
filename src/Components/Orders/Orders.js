@@ -43,7 +43,7 @@ class Orders extends Component {
   }
 }
 
-Order.propTypes = {
+Orders.propTypes = {
   orders: PropTypes.object,
   onActiveOrder: PropTypes.func,
   onCompleteOrder: PropTypes.func,

@@ -21,8 +21,7 @@ class OrderClosed extends Component {
   }
 }
 
-Order.propTypes = {
-  order: PropTypes.object,
+OrderClosed.propTypes = {
   onActiveOrder: PropTypes.func,
   onDeleteOrder: PropTypes.func
 }
