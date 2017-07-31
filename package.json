@@ -2,6 +2,7 @@
   "name": "drive-thru-app",
   "version": "0.1.0",
   "description": "A drive thru order app",
+  "homepage" : "http://mapleandpine.github.io/drive-thru-app",
   "main": "index.js",
   "repository": "git@github.com:mapleandpine/drive-thru-app.git",
   "author": "Nic Marson",

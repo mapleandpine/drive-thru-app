@@ -1,5 +1,6 @@
 # drive-thru-app
 A react.js based application for taking orders at a drive-thru.
+[View a demo](https://drive-thru.netlify.com)
 
 ## The requirements for the project:
 1. Create a visual menu where the drive-thru employee can select menu items to build the order and then send the order to the cooks.
