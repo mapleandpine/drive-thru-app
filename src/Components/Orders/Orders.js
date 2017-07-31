@@ -6,6 +6,11 @@ import './Orders.css';
 
 class Orders extends Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
   activeOrder(id) {
     this.props.onActiveOrder(id);
   }
@@ -19,21 +24,21 @@ class Orders extends Component {
   }
 
   render() {
-
     let orderItem;
-    orderItem = this.props.orders.map(order => {
-      const closed = order.closed;
-      if (closed) {
-        return (
-          <OrderClosed onActiveOrder={this.activeOrder.bind(this)} onDeleteOrder={this.deleteOrder.bind(this)} key={order.id} order={order} />
-        )
-      } else {
-        return (
-          <Order onActiveOrder={this.activeOrder.bind(this)} onCompleteOrder={this.completeOrder.bind(this)} onDeleteOrder={this.deleteOrder.bind(this)} key={order.id} order={order} />
-        )
-      }
-    });
-
+    if(this.props.orders) {
+      orderItem = this.props.orders.map(order => {
+        const closed = order.closed;
+        if (closed) {
+          return (
+            <OrderClosed onActiveOrder={this.activeOrder.bind(this)} onDeleteOrder={this.deleteOrder.bind(this)} key={order.id} order={order} />
+          )
+        } else {
+          return (
+            <Order onActiveOrder={this.activeOrder.bind(this)} onCompleteOrder={this.completeOrder.bind(this)} onDeleteOrder={this.deleteOrder.bind(this)} key={order.id} order={order} />
+          )
+        }
+      });
+    }
     return (
       <div className="Orders">
         <h2 className="heading">Orders</h2>
