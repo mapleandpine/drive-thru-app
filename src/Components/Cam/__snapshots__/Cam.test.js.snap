@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`class Cam extends _react.Component {
+
+  render() {
+    return (
+      _react2.default.createElement('div', { className: 'Cam', __source: { fileName: _jsxFileName, lineNumber: 10 }, __self: this },
+        _react2.default.createElement('video', { className: 'CamVideo', autoPlay: true, loop: true, poster: _Cam2.default, __source: { fileName: _jsxFileName, lineNumber: 11 }, __self: this },
+          _react2.default.createElement('source', { src: _Cam4.default, type: 'video/mp4', __source: { fileName: _jsxFileName, lineNumber: 12 }, __self: this }))));
+
+
+
+  }} renders and matches our snapshot 1`] = `
+<div
+  className="Cam"
+>
+  <video
+    autoPlay={true}
+    className="CamVideo"
+    loop={true}
+    poster="Cam.png"
+  >
+    <source
+      src="Cam.mp4"
+      type="video/mp4"
+    />
+  </video>
+</div>
+`;

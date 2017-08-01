@@ -1,8 +1,14 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { shallow } from 'enzyme';
+import renderer from 'react-test-renderer';
 import Cam from './Cam';
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<Cam />, div);
+describe(Cam, () => {
+  it('renders and matches our snapshot', () => {
+    const component = renderer.create(
+      <Cam />
+    );
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 });

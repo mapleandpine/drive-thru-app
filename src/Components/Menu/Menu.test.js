@@ -1,8 +1,14 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { shallow } from 'enzyme';
+import renderer from 'react-test-renderer';
 import Menu from './Menu';
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<Menu />, div);
+describe(Menu, () => {
+  it('renders and matches our snapshot', () => {
+    const component = renderer.create(
+      <Menu />
+    );
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 });

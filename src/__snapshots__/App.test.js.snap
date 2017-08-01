@@ -1,0 +1,418 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`class App extends _react.Component {
+
+  constructor(props) {
+    super(props);
+
+    // ~store
+    this.state = {
+      orders: [],
+      activeOrder: null,
+      hasItems: false,
+      menu: [
+      {
+        id: '1',
+        class: 'cheeseburger',
+        title: 'Cheeseburger',
+        price: '4.99' },
+
+      {
+        id: '2',
+        class: 'hotdog',
+        title: 'Hot Dog',
+        price: '4.99' },
+
+      {
+        id: '3',
+        class: 'chicken',
+        title: 'Chicken',
+        price: '4.99' },
+
+      {
+        id: '4',
+        class: 'fries',
+        title: 'Fries',
+        price: '1.99' },
+
+      {
+        id: '5',
+        class: 'coffee',
+        title: 'Coffee',
+        price: '1.99' },
+
+      {
+        id: '6',
+        class: 'soda',
+        title: 'Soda',
+        price: '1.99' },
+
+      {
+        id: '7',
+        class: 'beer',
+        title: 'Beer',
+        price: '1.99' },
+
+      {
+        id: '8',
+        class: 'icecream',
+        title: 'Ice Cream',
+        price: '1.99' }] };
+
+
+
+  }
+
+  // Handle the Orders
+
+  countOrders() {
+    // alert the manager when over four orders
+    let orderLength = this.state.orders.length;
+    if (orderLength > 3) {
+      alert('get the manager!');
+    }
+  }
+
+  handleAddOrder(id) {
+    // move ticket to orders
+    let activeOrder = this.state.activeOrder;
+    this.setState((prevState, props) => {
+      let orders = prevState.orders.slice();
+      // save current order
+      orders.push(activeOrder);
+      return {
+        orders: orders };
+
+    });
+    // reset ticket
+    this.newActiveOrder();
+    this.setState({ hasItems: false });
+    this.countOrders();
+  }
+
+  handleCompleteOrder(id) {
+    // find order to complete
+    this.setState((prevState, props) => {
+      id.closed = true;
+      let orders = this.state.orders;
+      return {
+        orders: orders };
+
+    });
+  }
+
+  handleDeleteOrder(id) {
+    // delete the order
+    let orders = this.state.orders;
+    // identify the order to remove
+    let index = orders.findIndex(x => x.id === id);
+    let orderToRemove = orders.splice(index, 1);
+    this.setState(function (prevState, props) {
+      // create new array without the order
+      let reducedOrders = prevState.orders.filter(id => id !== orderToRemove);
+      return {
+        orders: reducedOrders };
+
+    });
+  }
+
+  handleActiveOrder(id) {
+    // review order ticket
+    this.setState((prevState, props) => {
+      function isSelected(order) {
+        return order.id === id;
+      }
+      let orders = prevState.orders.slice();
+      var target = orders.filter(isSelected).pop();
+      return {
+        activeOrder: target };
+
+    });
+  }
+
+
+  // Handle the Active Order
+
+  newActiveOrder() {
+    // new blank ticket
+    this.setState({
+      activeOrder: {
+        closed: false,
+        date: new Date(),
+        id: _uuid2.default.v4(),
+        items: [] } });
+
+
+  }
+
+  countTicketItems() {
+    // count ticket items
+    let ticketItems = this.state.activeOrder.items;
+    if (ticketItems.length > 0) {
+      this.setState({ hasItems: true });
+    } else {
+      this.setState({ hasItems: false });
+    }
+  }
+
+  handleAddItem(newItems) {
+    // add menu items to ticket
+    let activeOrder = this.state.activeOrder;
+    let activeOrderItems = this.state.activeOrder.items;
+    activeOrderItems.push(newItems);
+    this.setState({
+      activeOrder: activeOrder },
+    this.countTicketItems());
+  }
+
+  handleDeleteItem(id) {
+    // delete ticket items
+    let activeOrder = this.state.activeOrder;
+    let activeOrderItems = this.state.activeOrder.items;
+    let index = activeOrderItems.findIndex(x => x.id === id);
+    activeOrderItems.splice(index, 1);
+    this.setState({
+      activeOrder: activeOrder },
+    this.countTicketItems());
+  }
+
+  componentWillMount() {
+    this.newActiveOrder();
+  }
+
+  render() {
+    return (
+      _react2.default.createElement('div', { className: 'App', __source: { fileName: _jsxFileName, lineNumber: 191 }, __self: this },
+        _react2.default.createElement('h1', { className: 'AppHeading', __source: { fileName: _jsxFileName, lineNumber: 192 }, __self: this }, 'OrderTRON 9000'),
+        _react2.default.createElement(_Cam2.default, { __source: { fileName: _jsxFileName, lineNumber: 193 }, __self: this }),
+        _react2.default.createElement(_Orders2.default, { orders: this.state.orders, onActiveOrder: this.handleActiveOrder.bind(this), onCompleteOrder: this.handleCompleteOrder.bind(this), onDeleteOrder: this.handleDeleteOrder.bind(this), __source: { fileName: _jsxFileName, lineNumber: 194 }, __self: this }),
+        _react2.default.createElement('div', { className: 'ActiveOrder', __source: { fileName: _jsxFileName, lineNumber: 195 }, __self: this },
+          _react2.default.createElement(_Menu2.default, { menu: this.state.menu, onAddItem: this.handleAddItem.bind(this), __source: { fileName: _jsxFileName, lineNumber: 196 }, __self: this }),
+          _react2.default.createElement(_Ticket2.default, { activeOrder: this.state.activeOrder, hasItems: this.state.hasItems, onDeleteItem: this.handleDeleteItem.bind(this), onAddOrder: this.handleAddOrder.bind(this), __source: { fileName: _jsxFileName, lineNumber: 197 }, __self: this }))));
+
+
+
+  }
+
+  componentDidMount() {
+    this.countOrders();
+    this.countTicketItems();
+  }} renders and matches our snapshot 1`] = `
+<div
+  className="App"
+>
+  <h1
+    className="AppHeading"
+  >
+    OrderTRON 9000
+  </h1>
+  <div
+    className="Cam"
+  >
+    <video
+      autoPlay={true}
+      className="CamVideo"
+      loop={true}
+      poster="Cam.png"
+    >
+      <source
+        src="Cam.mp4"
+        type="video/mp4"
+      />
+    </video>
+  </div>
+  <div
+    className="Orders"
+  >
+    <h2
+      className="heading"
+    >
+      Orders
+    </h2>
+  </div>
+  <div
+    className="ActiveOrder"
+  >
+    <div
+      className="Menu"
+    >
+      <div
+        className="MenuList"
+      >
+        <div
+          className="MenuItem"
+          onClick={[Function]}
+        >
+          <figure
+            className="cheeseburger"
+            style={
+              Object {
+                "backgroundImage": "url(Menu.png)",
+              }
+            }
+          >
+            <strong>
+              Cheeseburger
+            </strong>
+             
+            4.99
+          </figure>
+        </div>
+        <div
+          className="MenuItem"
+          onClick={[Function]}
+        >
+          <figure
+            className="hotdog"
+            style={
+              Object {
+                "backgroundImage": "url(Menu.png)",
+              }
+            }
+          >
+            <strong>
+              Hot Dog
+            </strong>
+             
+            4.99
+          </figure>
+        </div>
+        <div
+          className="MenuItem"
+          onClick={[Function]}
+        >
+          <figure
+            className="chicken"
+            style={
+              Object {
+                "backgroundImage": "url(Menu.png)",
+              }
+            }
+          >
+            <strong>
+              Chicken
+            </strong>
+             
+            4.99
+          </figure>
+        </div>
+        <div
+          className="MenuItem"
+          onClick={[Function]}
+        >
+          <figure
+            className="fries"
+            style={
+              Object {
+                "backgroundImage": "url(Menu.png)",
+              }
+            }
+          >
+            <strong>
+              Fries
+            </strong>
+             
+            1.99
+          </figure>
+        </div>
+        <div
+          className="MenuItem"
+          onClick={[Function]}
+        >
+          <figure
+            className="coffee"
+            style={
+              Object {
+                "backgroundImage": "url(Menu.png)",
+              }
+            }
+          >
+            <strong>
+              Coffee
+            </strong>
+             
+            1.99
+          </figure>
+        </div>
+        <div
+          className="MenuItem"
+          onClick={[Function]}
+        >
+          <figure
+            className="soda"
+            style={
+              Object {
+                "backgroundImage": "url(Menu.png)",
+              }
+            }
+          >
+            <strong>
+              Soda
+            </strong>
+             
+            1.99
+          </figure>
+        </div>
+        <div
+          className="MenuItem"
+          onClick={[Function]}
+        >
+          <figure
+            className="beer"
+            style={
+              Object {
+                "backgroundImage": "url(Menu.png)",
+              }
+            }
+          >
+            <strong>
+              Beer
+            </strong>
+             
+            1.99
+          </figure>
+        </div>
+        <div
+          className="MenuItem"
+          onClick={[Function]}
+        >
+          <figure
+            className="icecream"
+            style={
+              Object {
+                "backgroundImage": "url(Menu.png)",
+              }
+            }
+          >
+            <strong>
+              Ice Cream
+            </strong>
+             
+            1.99
+          </figure>
+        </div>
+      </div>
+    </div>
+    <div
+      className="Ticket"
+    >
+      <h2
+        className="heading"
+      >
+        Ticket
+      </h2>
+      <div
+        className="TicketList"
+      >
+        <div
+          className="TicketMessage"
+        >
+          <p>
+            Make a selection from the menu
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

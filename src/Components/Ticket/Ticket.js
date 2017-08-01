@@ -5,7 +5,7 @@ import TicketItem from "./TicketItem";
 import TicketItemClosed from "./TicketItemClosed";
 import "./Ticket.css";
 
-class ActiveOrder extends Component {
+class Ticket extends Component {
 
   constructor(props) {
     super(props);
@@ -82,7 +82,7 @@ function TicketMessage(props) {
   );
 }
 
-ActiveOrder.propTypes = {
+Ticket.propTypes = {
   hasItems: PropTypes.object,
   activeOrder: PropTypes.object,
   addItem: PropTypes.func,
@@ -90,5 +90,5 @@ ActiveOrder.propTypes = {
   onDeleteItem: PropTypes.func
 }
 
-export default ActiveOrder;
+export default Ticket;
 
