@@ -136,7 +136,6 @@ class App extends Component {
     });
   }
 
-
   // Handle the Active Order
 
   newActiveOrder() {
@@ -165,10 +164,15 @@ class App extends Component {
     // add menu items to ticket
     let activeOrder = this.state.activeOrder;
     let activeOrderItems = this.state.activeOrder.items;
-    activeOrderItems.push(newItems);
-    this.setState({
-      activeOrder:activeOrder
-    }, this.countTicketItems());
+    let closed = this.state.activeOrder.closed;
+    if (closed) {
+      alert('This ticket is closed.');
+    } else {
+      activeOrderItems.push(newItems);
+      this.setState({
+        activeOrder:activeOrder
+      }, this.countTicketItems());
+    }
   }
 
   handleDeleteItem(id) {

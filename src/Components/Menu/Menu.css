@@ -3,6 +3,8 @@
 .Menu {
   background-color: #555;
   border-radius: 0 0 12px 0;
+  display: flex;
+  flex-wrap: wrap;
   grid-column: 1;
   grid-row: 1;
   padding: 6px;
@@ -10,11 +12,6 @@
 
 .Menu .heading {
   text-transform: uppercase;
-}
-
-.MenuList {
-  display: flex;
-  flex-wrap: wrap;
 }
 
 .MenuItem {

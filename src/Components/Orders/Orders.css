@@ -5,6 +5,8 @@
   flex-direction: column;
   grid-column: col 2;
   grid-row: row;
+  max-height: 300px;
+  overflow: scroll;
   padding: 10px;
 }
 

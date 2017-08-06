@@ -1,14 +1,11 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import renderer from 'react-test-renderer';
+import ReactDOM from 'react-dom';
 import App from './App';
 
-describe(App, () => {
-  it('renders and matches our snapshot', () => {
-    const component = renderer.create(
-      <App />
-    );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
-  });
+// https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#running-tests
+// https://facebook.github.io/jest/docs/snapshot-testing.html
+
+it('renders without crashing', () => {
+  const div = document.createElement('div');
+  ReactDOM.render(<App />, div);
 });

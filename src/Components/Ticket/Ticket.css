@@ -3,6 +3,8 @@
 .Ticket {
   grid-column: 2;
   grid-row: 1;
+  max-height: 300px;
+  overflow: scroll;
   padding-left: 10px;
   padding-right: 10px;
 }
@@ -57,12 +59,21 @@
   fill: #fff;
 }
 
-.TicketMessage {
-  background-color: #8CC394;
-  color: #325738;
+.TicketMessage,
+.TicketClosedMessage {
   display: block;
   font-size: 18px;
   padding: 1rem;
+}
+
+.TicketMessage {
+  background-color: #8CC394;
+  color: #325738;
+}
+
+.TicketClosedMessage {
+  background-color: #EDC1C1;
+  color: #B2474D;
 }
 
 .TicketSave {

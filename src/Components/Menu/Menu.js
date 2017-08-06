@@ -12,6 +12,7 @@ class Menu extends Component {
   render() {
     let menuItems;
     if(this.props.menu) {
+      console.log(this.props.menu);
       menuItems = this.props.menu.map(menuitem => {
         return (
           <MenuItem onAddItem={this.addItem.bind(this)} key={menuitem.class} menuitem={menuitem}/>
@@ -21,9 +22,7 @@ class Menu extends Component {
 
     return (
       <div className="Menu">
-        <div className="MenuList">
-          {menuItems}
-        </div>
+        {menuItems}
       </div>
     );
   }

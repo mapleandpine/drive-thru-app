@@ -26,17 +26,19 @@ class Ticket extends Component {
   }
 
   render() {
-    const hasItems = this.props.hasItems;
+    let hasItems = this.props.hasItems;
+    let closed = this.props.activeOrder.closed;
     let ticketButton = null;
     let ticketMessage = null;
+    let ticketClosedMessage = null;
     if (hasItems) {
       ticketButton = <TicketButton className="TicketSave" onClick={this.newOrder.bind(this)} />;
+    } else if (closed) {
+      ticketClosedMessage = <TicketClosedMessage  className="TicketClosedMessage" />;
     } else {
       ticketMessage = <TicketMessage  className="TicketMessage" />;
     }
-
     let ticketItems;
-    const closed = this.props.activeOrder.closed;
     if (closed) {
       if(this.props.activeOrder.items) {
         ticketItems = this.props.activeOrder.items.map(ticketItem => {
@@ -62,6 +64,7 @@ class Ticket extends Component {
           {ticketItems}
           {ticketButton}
           {ticketMessage}
+          {ticketClosedMessage}
         </div>
       </div>
     );
@@ -77,7 +80,15 @@ function TicketButton(props) {
 function TicketMessage(props) {
   return (
     <div className="TicketMessage">
-      <p>Make a selection from the menu</p>
+      <p>Make a selection from the menu.</p>
+    </div>
+  );
+}
+
+function TicketClosedMessage(props) {
+  return (
+    <div className="TicketClosedMessage">
+      <p>This ticket is closed.</p>
     </div>
   );
 }
